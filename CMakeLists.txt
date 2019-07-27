@@ -1,5 +1,17 @@
-cmake_minimum_required(VERSION 2.8.12)
-project(cmake_example)
+project(PyBind11CmakeExample)
 
-add_subdirectory(pybind11)
-pybind11_add_module(cmake_example src/main.cpp)
+pybind11_add_module(${PROJECT_NAME})
+
+target_sources(
+    ${PROJECT_NAME}
+    PUBLIC
+    src/main.cpp
+)
+
+target_include_directories(
+    ${PROJECT_NAME}
+    PUBLIC
+    include
+)
+
+install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_SOURCE_DIR}/scripts)
